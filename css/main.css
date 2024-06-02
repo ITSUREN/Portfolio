@@ -6,3 +6,81 @@ body {
     background-color: black;
     color: whitesmoke;
 }
+
+.center {
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 3px solid green;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    /* Adjust the height as needed */
+    height: 150px;
+    overflow: hidden;
+}
+
+.container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adjusts the GIF to cover the container */
+}
+
+.blurred-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background to avoid white flash */
+    backdrop-filter: blur(10px); /* Gaussian blur effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.blurred-panel p {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #33333300;
+    /* color: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 50px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+.social-icons {
+    display: flex;
+    gap: 100px;
+}
+
+.footer-bar a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 15px; /* Add margin to create space between icons */
+}
+
+.footer-bar a:first-child {
+    margin-left: 0; /* Remove margin from the first icon */
+}
+
+.footer-bar a img {
+    width: 24px;
+    height: 24px;
+}
