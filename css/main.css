@@ -1,17 +1,11 @@
-html {
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
     font-size: 22px;
-}
-
-body {
     background-color: black;
     color: whitesmoke;
-}
-
-.center {
-    display: block;
-    margin-left: 25%;
-    margin-right: 25%;
-    border: 3px solid green;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .footer-bar {
@@ -19,7 +13,6 @@ body {
     bottom: 0;
     width: 100%;
     background-color: #33333300;
-    /* color: #fff; */
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -38,11 +31,11 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    margin-left: 15px; /* Add margin to create space between icons */
+    margin-left: 15px;
 }
 
 .footer-bar a:first-child {
-    margin-left: 0; /* Remove margin from the first icon */
+    margin-left: 0;
 }
 
 .footer-bar a img {
@@ -52,11 +45,11 @@ body {
 
 .tab-container {
     width: 100%;
-    padding: 40px 0px;
-    /* max-width: 800px; */
+    padding: 40px 0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .tabs {
@@ -65,6 +58,7 @@ body {
     padding: 10px 0;
     height: 40px;
     background-color: #000000;
+    flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
 }
 
 .tab {
@@ -72,7 +66,7 @@ body {
     color: #fff;
     background-color: #444;
     border-radius: 20px;
-    margin: 0 10px;
+    margin: 5px; /* Adjust margin for better spacing on smaller screens */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
@@ -87,10 +81,10 @@ body {
 }
 
 .content-container {
-    padding: 30px 0px;
+    padding: 30px 0;
     position: relative;
     overflow: hidden;
-    /* transition: height 0.3s ease; */ /* Remove this line */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .content {
@@ -156,4 +150,10 @@ body {
     content: "";
     display: table;
     clear: both;
+}
+
+/* Ensure images and content are responsive */
+img, .profile-pic {
+    max-width: 100%;
+    height: auto;
 }
