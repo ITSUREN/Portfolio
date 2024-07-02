@@ -13,6 +13,7 @@ html, body {
     bottom: 0;
     width: 100%;
     background-color: #33333300;
+    /* color: #fff; */
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -31,11 +32,11 @@ html, body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    margin-left: 15px; /* Add margin to create space between icons */
 }
 
 .footer-bar a:first-child {
-    margin-left: 0;
+    margin-left: 0; /* Remove margin from the first icon */
 }
 
 .footer-bar a img {
