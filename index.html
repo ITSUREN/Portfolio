@@ -5,61 +5,54 @@
     <meta name="author" content="Itsuren Kanakueta">
     <meta name="description" content="This Page for testing out a portfolio Website">
     <title> ITSUREN </title>
-    <!--For the favicon-->
     <link rel="icon" href="./icons/frangipani.png" type="image/x-icon"> 
     <link rel="stylesheet" href="./css/main.css" type="text/css">
-    <script src="/js/script.js"></script>
+    <script src="/js/script.js" defer></script>
 </head>
-<!-- Body Below-->
 <body>
-    <div class="tab-container">
-        <div class="tabs">
-            <div class="tab" data-target="profile">Profile</div>
-            <div class="tab" data-target="about">About</div>
-            <div class="tab" data-target="works">Works</div>
-        </div>
-        <div class="content-container">
-            <div class="content" id="profile">
-                <div class="profile-left">
-                    <div class="blob">
-                        <img src="/images/avatar.png" alt="Profile Picture" class="profile-pic">
-                    </div>
-                </div>
-                <div class="profile-right">
-                    <h2>Author:</h2>
-                    <p>
-                        Name: Saugat Tamang
-                        <br>
-                        ORCID: 0009-0001-9758-4967
-                    </p> 
-                    <h3>Contact</h3>
-                    <p>
-                        Email: admin@saugattamang.com.np
-                    </p>
-                </div>
+    <nav class="tab-container" aria-label="Main Navigation">
+        <ul class="tabs" role="tablist">
+            <li class="tab-item" role="presentation">
+                <button class="tab" role="tab" aria-selected="true" tabindex="0" data-target="profile" aria-controls="profile">Profile</button>
+            </li>
+            <li class="tab-item" role="presentation">
+                <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-target="about" aria-controls="about">About</button>
+            </li>
+            <li class="tab-item" role="presentation">
+                <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-target="works" aria-controls="works">Works</button>
+            </li>
+        </ul>
+    </nav>
+    <div class="content-container">
+        <div class="content" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="content-left">
+                <div class="blob"></div>
+                <img src="/images/avatar.png" class="content-pic" aria-label="Avatar" alt="Profile Picture">
             </div>
-            <div class="content" id="about">
-                <div class="profile-left">
-                    <div class="blob">
-                        <img src="/images/server.png" alt="Profile Picture" class="profile-pic">
-                    </div>
-                </div>
-                <div class="profile-right">
-                    <h2>About:</h2>
-                    <p>
-                        A Student of Computer Science.
-                    </p> 
-                </div>
+            <div class="content-right">
+                <h2>Author:</h2>
+                <p id="author-details"></p> 
+                <h3>Contact</h3>
+                <p id="contact-details"></p>
             </div>
-            <div class="content" id="works">
-                <p> Work Page Not Implemented Yet</p>
-            </div>                
         </div>
+        <div class="content" id="about" role="tabpanel" aria-labelledby="about-tab">
+            <div class="content-left">
+                <div class="blob"></div>
+                <img src="/images/server.png" alt="Server Picture" class="content-pic">
+            </div>
+            <div class="content-right">
+                <h2>About:</h2>
+                <p id="about-details"></p>
+            </div>
+        </div>
+        <div class="content" id="works" role="tabpanel" aria-labelledby="works-tab">
+            <p id="work-details"></p>
+        </div>                
     </div>
-
-    <div class="footer-bar">
-        <a href="https://monkeytype.com/profile/Itsuren" target="_blank"><img src="https://raw.githubusercontent.com/monkeytype-hub/monkeytype-icon/master/monkeytype-icon/svg/arch.svg" alt="MT"></a>
-        <a href="https://github.com/ITSURENXD" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg" alt="GH"></a>
+    <div class="footer-bar"> 
+        <a href="https://monkeytype.com/profile/Itsuren" target="_blank" aria-label="Go to Itsuren's monkey type profile"><img src="https://raw.githubusercontent.com/monkeytype-hub/monkeytype-icon/master/monkeytype-icon/svg/arch.svg" alt="MT"></a>
+        <a href="https://github.com/ITSURENXD" target="_blank" aria-label="Go to Itsuren's github profile"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg" alt="GH"></a>
     </div>
 </body>
 </html>
