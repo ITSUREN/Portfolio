@@ -111,23 +111,16 @@ body {
 .content {
     position: absolute;
     width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 100%;
     opacity: 0;
-    transition: left 0.3s ease, opacity 0.3s ease;
+    transform: translateX(100%); /* Default position off-screen to the right */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1;
 }
 
 .content.active {
-    left: 0;
     opacity: 1;
-    position: relative;
-}
-
-.content.previous {
-    left: -100%;
-    opacity: 0;
+    transform: translateX(0); /* Center the active content */
+    z-index: 2; /* Ensure active content is on top */
 }
 
 .content-left, .content-right {
