@@ -30,37 +30,47 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading details:', error));
     };
 
+    // Immediately set initial positions without transitions
+    contents.forEach((content, i) => {
+        content.style.transition = 'none';
+        if (i === currentIndex) {
+            content.style.transform = 'translateX(0)';
+            content.style.opacity = '1';
+        } else {
+            content.style.transform = 'translateX(100%)';
+            content.style.opacity = '0';
+        }
+    });
+
+    // Enable transitions after first paint
+    requestAnimationFrame(() => {
+        contents.forEach((content) => {
+            content.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+        });
+    });
+
     // Switch content with sliding effect
     const switchContent = (newIndex) => {
-        if (newIndex === currentIndex) return; // No need to switch if already active
+        if (newIndex === currentIndex) return;
 
-        const currentContent = contents[currentIndex];
-        const nextContent = contents[newIndex];
-
-        // Determine the direction of the slide
         const isForward = newIndex > currentIndex;
 
-        // Prepare next content for sliding
-        nextContent.style.transform = isForward ? 'translateX(100%)' : 'translateX(-100%)';
-        nextContent.style.opacity = '1'; // Make next content visible
-        nextContent.style.zIndex = '2';
-
-        // Slide out the current content
-        currentContent.style.transform = isForward ? 'translateX(-100%)' : 'translateX(100%)';
-        currentContent.style.opacity = '0';
-        currentContent.style.zIndex = '1';
-
-        // Slide in the next content
-        nextContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-        currentContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-        nextContent.style.transform = 'translateX(0)';
-
-        // Update the current index after the transition
-        setTimeout(() => {
-            currentContent.style.zIndex = '';
-            nextContent.style.zIndex = '';
-            currentIndex = newIndex;
-        }, 300); // Match the CSS transition duration
+        contents.forEach((content, i) => {
+            if (i === newIndex) {
+                content.style.transform = 'translateX(0)';
+                content.style.opacity = '1';
+                content.style.zIndex = '2';
+            } else if (i === currentIndex) {
+                content.style.transform = isForward ? 'translateX(-100%)' : 'translateX(100%)';
+                content.style.opacity = '0';
+                content.style.zIndex = '1';
+            } else {
+                content.style.transform = i > newIndex ? 'translateX(100%)' : 'translateX(-100%)';
+                content.style.opacity = '0';
+                content.style.zIndex = '0';
+            }
+        });
+        currentIndex = newIndex;
     };
 
     // Add event listeners to tabs
@@ -68,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tab.addEventListener('click', () => {
             if (index !== currentIndex) {
                 switchContent(index);
-
-                // Update tab active state
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
             }
@@ -78,8 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the first tab and content as active
     tabs[0].classList.add('active');
-    contents[0].style.transform = 'translateX(0)';
-    contents[0].style.opacity = '1';
 
     // Load details from JSON
     loadDetails();
